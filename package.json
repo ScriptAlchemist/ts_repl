@@ -2,12 +2,12 @@
   "name": "zodTypes",
   "private": true,
   "license": "MIT",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "tsx watch ./**/*.ts",
-    "lint": "yarn eslint . --ext .ts,.tsx"
+    "start": "tsx watch ./src/**/*.ts",
+    "lint": "yarn eslint ./src --ext .ts,.tsx"
   },
   "packageManager": "yarn@4.9.1",
   "volta": {
