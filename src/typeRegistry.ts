@@ -1,27 +1,28 @@
 // src/typeRegistry.ts
 
 import z from "zod/v4";
-
-export const $Post = z.object({
-  title: z.string(),
-  content: z.string(),
-});
-
-export type Post = z.infer<typeof $Post>;
+import { $ZodRegistry } from "zod/v4/core";
 
 export const $User = z.object({
   id: z.uuid(),
   name: z.string(),
-  posts: z.array($Post),
+  posts: z.array(
+    z.object({
+      title: z.string(),
+      content: z.string(),
+    })
+  ),
 });
+
 export type User = z.infer<typeof $User>;
 
 export const userRegistry = z.registry<User>();
 console.log('User Registry setup');
 
-// Function to get metadata by schema reference
-export function getMetaBySchema(schema: typeof $User) {
-  return userRegistry.get(schema);
+// Function to Add User to Registry
+export function addUserToRegistry(user: User): void {
+  $User.clone().register(userRegistry, user);
+  console.log(`User ${user.name} added to registry.`);
 }
 
 // Function to get metadata by ID or any other field
@@ -35,3 +36,15 @@ export function getMetaByField<T>(field: keyof typeof userRegistry._meta, value:
   return undefined;
 }
 
+export function removeById(registry: $ZodRegistry, id: string) {
+  for (const schema of registry._idmap.values()) {
+    const meta = registry.get(schema);
+    if (meta && meta.id === id) {
+      registry.remove(schema);
+      console.log(`Schema with ID ${id} removed`);
+      return true;
+    }
+  }
+  console.log(`Schema with ID ${id} not found`);
+  return false;
+}
