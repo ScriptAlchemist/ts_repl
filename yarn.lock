@@ -3588,6 +3588,8 @@ __metadata:
     react-dom: "npm:^19.0.0"
     tailwindcss: "npm:^4"
     typescript: "npm:^5"
+    uuid: "npm:^11.1.0"
+    zod: "npm:^3.25.7"
   languageName: unknown
   linkType: soft
 
@@ -4956,6 +4958,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uuid@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "uuid@npm:11.1.0"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10c0/34aa51b9874ae398c2b799c88a127701408cd581ee89ec3baa53509dd8728cbb25826f2a038f9465f8b7be446f0fbf11558862965b18d21c993684297628d4d3
+  languageName: node
+  linkType: hard
+
 "which-boxed-primitive@npm:^1.1.0, which-boxed-primitive@npm:^1.1.1":
   version: 1.1.1
   resolution: "which-boxed-primitive@npm:1.1.1"
@@ -5093,6 +5104,13 @@ __metadata:
   version: 3.25.0-beta.20250518T002810
   resolution: "zod@npm:3.25.0-beta.20250518T002810"
   checksum: 10c0/d68b289b531a91ab8881f8517ec22b052edbaf5b2a7e9b90235fd5e5605dc091d5ba34938827716111587b439fd24aa81a408b391f45ac64b80583baac557278
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.25.7":
+  version: 3.25.7
+  resolution: "zod@npm:3.25.7"
+  checksum: 10c0/9bf497ed9b810d30b84ae032ec7882435d0fb9c94db08427592f56b711227726cfb7551ee7ca9f99135dfaff1fcff5ce261e25a6400f62b651ec23880cb41013
   languageName: node
   linkType: hard
 

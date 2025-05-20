@@ -1,12 +1,40 @@
-export default function Home() {
+'use client';
+
+import { useSyncExternalStore } from "react";
+import { userRegistryStore } from "./hooks/useZodRegistry";
+import { v4 as uuidv4 } from "uuid";
+
+export default function UserRegistryPage() {
+  const users = useSyncExternalStore(
+    userRegistryStore.subscribe,
+    userRegistryStore.getSnapshot,
+    undefined
+  );
+  console.log(users);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        Main
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        Footer
-      </footer>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>User Registry</h1>
+      <div style={{ marginBottom: "1rem" }}>
+       <button
+        onClick={() => {
+          userRegistryStore.addUser({
+            id: uuidv4(),
+            name: "New User",
+          });
+        }}
+      >
+        Add User
+      </button>
+      </div>
+      <ul>
+        {users.map((u) => (
+          <li key={u.id}>
+            {u.name} ({u.id}){" "}
+            <button onClick={() => userRegistryStore.removeUserById(u.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

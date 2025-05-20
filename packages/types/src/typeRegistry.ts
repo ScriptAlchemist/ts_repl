@@ -43,10 +43,11 @@ export function getMetaByField<T extends GlobalMeta>(
 
 // Function to Remove User by ID
 export function removeById(registry: $ZodRegistry<User>, id: string): boolean {
-  for (const schema of registry._idmap.values()) {
+  for (const [key, schema] of registry._idmap.entries()) {
     const meta = registry.get(schema);
     if (meta && meta.id === id) {
-      registry.remove(schema);
+      registry.remove(schema);        // Unregister schema from registry
+      registry._idmap.delete(key);    // Clean up stale key manually
       console.log(`User with ID ${id} removed`);
       return true;
     }
