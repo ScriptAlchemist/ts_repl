@@ -1,13 +1,14 @@
 {
-  "name": "zodTypes",
+  "name": "zodTypesMono",
   "private": true,
   "license": "MIT",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "start": "tsx watch ./src/**/*.ts",
-    "lint": "yarn eslint ./src --ext .ts,.tsx"
+    "start": "turbo run start",
+    "lint": "turbo run lint"
   },
   "packageManager": "yarn@4.9.1",
   "volta": {
@@ -15,16 +16,6 @@
     "yarn": "4.9.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
-    "eslint": "^9.27.0",
-    "globals": "^16.1.0",
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1"
-  },
-  "dependencies": {
-    "zod": "3.25.0-beta.20250518T002810"
+    "turbo": "^2.5.3"
   }
 }
