@@ -11,8 +11,12 @@
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "types": ["node"],
-    "typeRoots": ["./.yarn/__virtual__/*", "./.yarn/cache/*"]
+    "typeRoots": ["./.yarn/__virtual__/*", "./.yarn/cache/*"],
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

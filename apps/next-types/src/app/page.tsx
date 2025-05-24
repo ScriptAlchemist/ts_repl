@@ -1,14 +1,16 @@
 'use client';
 
 import { useSyncExternalStore } from "react";
-import { userRegistryStore } from "./hooks/useZodRegistry";
+import { User, userRegistryStore } from "./hooks/useZodRegistry";
 import { v4 as uuidv4 } from "uuid";
+
+const EMPTY_SNAPSHOT: User[] = [];
 
 export default function UserRegistryPage() {
   const users = useSyncExternalStore(
     userRegistryStore.subscribe,
     userRegistryStore.getSnapshot,
-    undefined
+    () => EMPTY_SNAPSHOT
   );
   console.log(users);
 

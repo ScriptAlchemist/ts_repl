@@ -1,0 +1,28 @@
+{
+  "lsp": {
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includePackageJsonAutoImports": "on",
+          "includeCompletionsForModuleExports": true
+        },
+        "typescript": {
+          "tsdk": ".yarn/sdks/typescript/lib"
+        }
+      }
+    }
+  },
+  "languages": {
+    "TypeScript": {
+      "language_servers": ["typescript-language-server"]
+    },
+    "TSX": {
+      "language_servers": ["typescript-language-server"]
+    }
+  },
+  "file_scan_exclusions": [
+    "**/.yarn/cache",
+    "**/.yarn/unplugged",
+    "**/.pnp.*"
+  ]
+}
