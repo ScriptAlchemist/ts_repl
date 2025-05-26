@@ -1,4 +1,4 @@
-import { addUserToRegistry, clearAllUsers, getMetaByField, popFirstUser, popLastUser, removeById, type User, userRegistry } from './typeRegistry.ts';
+import { addUserToRegistry, getMetaByField, popLastUser, type User, userRegistry } from './typeRegistry.ts';
 
 console.log("-----Hoisted Files Above Line-----");
 
